@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 env_path = Path(__file__).resolve().parents[1] / ".env"
-load_dotenv(env_path, override=Flase)
+load_dotenv(env_path, override=False)
 
 
 def get_kek():
