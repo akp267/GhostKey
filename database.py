@@ -1,8 +1,12 @@
+
 import sqlite3
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-DB_PATH = BASE_DIR / "instance" / "ghostkey.db"
+DB_DIR = BASE_DIR / "instance"
+DB_DIR.mkdir(parents=True, exist_ok=True)
+
+DB_PATH = DB_DIR / "ghostkey.db"
 
 
 def get_connection():
@@ -13,15 +17,16 @@ def get_connection():
 
 def initialize_database():
     with get_connection() as conn:
-       conn.execute("""
-    CREATE TABLE IF NOT EXISTS access_history (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        vault_id TEXT NOT NULL,
-        action TEXT NOT NULL,
-        access_time TEXT NOT NULL
-    )
-""")
-       conn.execute("""
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS access_history (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                vault_id TEXT NOT NULL,
+                action TEXT NOT NULL,
+                access_time TEXT NOT NULL
+            )
+        """)
+
+        conn.execute("""
             CREATE TABLE IF NOT EXISTS vaults (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 vault_id TEXT UNIQUE NOT NULL,
@@ -36,8 +41,6 @@ def initialize_database():
                 status TEXT DEFAULT 'active'
             )
         """)
-
-    conn.commit()
 
 
 if __name__ == "__main__":
