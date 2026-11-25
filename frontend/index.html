@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GhostKey — secure, self-expiring file sharing with AES-256-GCM encryption.">
+    <title>GhostKey — The Internet That Forgets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <nav class="navbar">
+        <a href="#" class="logo">GHOST<span>KEY</span></a>
+
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#security">Security</a>
+        </div>
+
+        <a href="#upload" class="nav-btn">Get Started ↗</a>
+    </nav>
+
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="tag">
+                <span class="dot"></span>
+                PRIVATE FILE SHARING REIMAGINED
+            </div>
+
+            <h1>
+                Your Files.<br>
+                <span>Your Rules.</span><br>
+                Your Privacy.
+            </h1>
+
+            <p>
+                Share sensitive files with confidence.
+                Control who gets access, for how long,
+                and when that access ends.
+            </p>
+
+            <a href="#upload" class="primary-btn">
+                Start Sharing <span>↗</span>
+            </a>
+
+            <div class="hero-note">
+                <span>✦</span> Privacy is not optional. It's yours.
+            </div>
+        </section>
+
+
+        <!-- UPLOAD SECTION -->
+        <section class="upload-section" id="upload">
+
+            <div class="section-heading">
+                <span>01 / SECURE UPLOAD</span>
+                <h2>Drop it. Secure it.</h2>
+            </div>
+
+            <div class="upload-card">
+
+                <div class="upload-icon">↥</div>
+
+                <h3>Upload your file</h3>
+                <p>Your file will be prepared for secure sharing.</p>
+
+                <label for="fileInput" class="upload-btn">
+                    Choose File
+                </label>
+
+                <input type="file" id="fileInput" hidden aria-describedby="fileName">
+
+                <div id="fileName" aria-live="polite">
+                    No file selected
+                </div>
+
+                <!-- UPLOAD SETTINGS -->
+                <div class="upload-settings">
+
+                    <label for="expiryTime">Expiry Time</label>
+
+                    <select id="expiryTime">
+                        <option value="5">5 Minutes</option>
+                        <option value="30">30 Minutes</option>
+                        <option value="60" selected>1 Hour</option>
+                        <option value="1440">24 Hours</option>
+                    </select>
+
+                    <label for="maxAccesses">Maximum Accesses</label>
+
+                    <input
+                        type="number"
+                        id="maxAccesses"
+                        min="1"
+                        max="100"
+                        value="1"
+                    >
+
+                </div>
+
+                <button type="button" id="uploadButton" class="upload-btn">
+                    Encrypt & Upload
+                </button>
+
+                <div id="uploadStatus" aria-live="polite"></div>
+
+
+                <!-- RECOVER SECTION -->
+                <div class="recovery-box">
+
+                    <h3>Recover Your File</h3>
+                    <p>Enter your Vault ID to download your file.</p>
+
+                    <input
+                        type="text"
+                        id="vaultIdInput"
+                        placeholder="Enter Vault ID"
+                    >
+
+                    <button type="button" id="recoverButton" class="upload-btn">
+                        Recover File
+                    </button>
+
+                    <div id="recoveryStatus" aria-live="polite"></div>
+
+                </div>
+
+
+                <!-- REVOKE SECTION -->
+                <div class="revoke-box">
+
+                    <h3>Revoke File Access</h3>
+                    <p>Stop further access to your active vault.</p>
+
+                    <input
+                        type="text"
+                        id="revokeVaultId"
+                        placeholder="Enter Vault ID"
+                    >
+
+                    <button type="button" id="revokeButton" class="upload-btn">
+                        Revoke Access
+                    </button>
+
+                    <div id="revokeStatus" aria-live="polite"></div>
+
+                </div>
+
+
+                <!-- ACCESS HISTORY SECTION -->
+                <div class="history-box">
+
+                    <h3>Access History</h3>
+                    <p>Track activity associated with your vault.</p>
+
+                    <input
+                        type="text"
+                        id="historyVaultId"
+                        placeholder="Enter Vault ID"
+                    >
+
+                    <button type="button" id="historyButton" class="upload-btn">
+                        View History
+                    </button>
+
+                    <div id="historyStatus" aria-live="polite"></div>
+
+                    <div id="historyResults"></div>
+
+                </div>
+
+
+                <!-- UPLOAD FOOTER -->
+                <div class="upload-footer">
+                    <span>✦ Private by design</span>
+                    <span>GhostKey Secure Space</span>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- FEATURES SECTION -->
+        <section class="features" id="features">
+
+            <div class="section-heading">
+                <span>02 / FEATURES</span>
+                <h2>Built for Privacy.</h2>
+            </div>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <h3>AES-256 Encryption</h3>
+                    <p>Your files are encrypted before being stored on the server.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Self-Expiring Files</h3>
+                    <p>Set an expiry time for your secure files.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Access Control</h3>
+                    <p>Limit how many times a file can be accessed.</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- SECURITY SECTION -->
+        <section class="security" id="security">
+
+            <div class="section-heading">
+                <span>03 / SECURITY</span>
+                <h2>Your Privacy Matters.</h2>
+            </div>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <h3>Encrypted Storage</h3>
+                    <p>Files are encrypted using AES-256-GCM before storage.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Protected Keys</h3>
+                    <p>Encryption keys are protected using a separate key-encryption key.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Controlled Access</h3>
+                    <p>Expiry times, access limits and revocation help control file availability.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 GhostKey. The Internet That Forgets.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
